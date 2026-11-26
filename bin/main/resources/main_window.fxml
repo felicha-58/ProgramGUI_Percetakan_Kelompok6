@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="680.0" prefWidth="950.0"
+      xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      stylesheets="@css/style.css"
+      fx:controller="main.java.controller.DashboardController">
+   <children>
+      <!-- Sidebar -->
+      <BorderPane style="-fx-background-color: #af3b7f;"
+                  prefWidth="220.0" minWidth="220.0" maxWidth="220.0">
+         <top>
+            <VBox spacing="15.0">
+               <padding>
+                  <Insets bottom="20.0" left="15.0" right="15.0" top="30.0"/>
+               </padding>
+               <children>
+                  <Label text="CHIIKAWA PRINT"
+                         style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                  <Separator opacity="0.3"/>
+                  <Button text="Manage Pelanggan" maxWidth="Infinity"
+                          styleClass="sidebar-button" onAction="#showPelangganView"/>
+                  <Button text="Manage Cetakan" maxWidth="Infinity"
+                          styleClass="sidebar-button" onAction="#showCetakanView"/>
+                  <Button text="Manage Nota" maxWidth="Infinity"
+                          styleClass="sidebar-button" onAction="#showNotaView"/>
+               </children>
+            </VBox>
+         </top>
+         <bottom>
+            <VBox spacing="10.0">
+               <padding>
+                  <Insets top="10.0" right="15.0" bottom="20.0" left="15.0"/>
+               </padding>
+               <children>
+                  <Separator opacity="0.3"/>
+                  <Button text="Exit" maxWidth="Infinity"
+                          styleClass="sidebar-button sidebar-exit" onAction="#handleExit"/>
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+
+      <TabPane fx:id="mainTabPane" HBox.hgrow="ALWAYS" minWidth="0" tabClosingPolicy="ALL_TABS">
+      </TabPane>
+   </children>
+</HBox>

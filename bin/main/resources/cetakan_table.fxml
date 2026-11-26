@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      stylesheets="@css/style.css"
+      fx:controller="main.java.controller.CetakanTableController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <children>
+        <GridPane hgap="10.0" vgap="10.0">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <children>
+                <Label text="Kode:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="kodeField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Nama:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="namaField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Tipe:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <ComboBox fx:id="tipeComboBox" value="Hangtag" GridPane.columnIndex="1"
+                          GridPane.rowIndex="2" onAction="#handleTypeSelection" maxWidth="Infinity">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Hangtag"/>
+                            <String fx:value="Brosur"/>
+                            <String fx:value="KartuNama"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Ukuran:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="ukuranField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Harga Satuan:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="hargaField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <VBox fx:id="dynamicFormContainer" spacing="10" GridPane.columnIndex="0"
+                      GridPane.rowIndex="5" GridPane.columnSpan="2"/>
+
+                <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <children>
+                        <Button onAction="#handleSubmit" text="Submit" styleClass="custom-button"/>
+                        <Button onAction="#handleUpdate" text="Update" styleClass="custom-button"/>
+                        <Button onAction="#handleDelete" text="Delete" styleClass="custom-button"/>
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+
+        <TableView fx:id="cetakanTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="kodeCol" text="Kode" prefWidth="100"/>
+                <TableColumn fx:id="namaCol" text="Nama" prefWidth="180"/>
+                <TableColumn fx:id="tipeCol" text="Tipe" prefWidth="100"/>
+                <TableColumn fx:id="ukuranCol" text="Ukuran" prefWidth="90"/>
+                <TableColumn fx:id="hargaCol" text="Harga" prefWidth="110"/>
+                <TableColumn fx:id="detailCol" text="Spesifikasi" prefWidth="250"/>
+            </columns>
+        </TableView>
+    </children>
+</VBox>

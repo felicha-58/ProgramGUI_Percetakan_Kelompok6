@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12.0" xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      stylesheets="@css/style.css"
+      fx:controller="main.java.controller.NotaTableController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <children>
+        <!-- Form Nota -->
+        <GridPane hgap="10.0" vgap="8.0">
+            <padding>
+                <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+            </padding>
+            <children>
+                <Label text="Nomor Nota:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="nomorField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Tanggal:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <DatePicker fx:id="tanggalPicker" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                            maxWidth="Infinity"/>
+
+                <Label text="Pelanggan:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <HBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <ComboBox fx:id="pelangganCombo" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+
+        <Separator/>
+
+        <!-- Tambah Item -->
+        <Label text="Tambah Item ke Nota:" style="-fx-font-weight: bold;"/>
+        <HBox spacing="10.0">
+            <children>
+                <ComboBox fx:id="cetakanCombo" HBox.hgrow="ALWAYS" maxWidth="Infinity"
+                          promptText="Pilih cetakan"/>
+                <TextField fx:id="jumlahField" promptText="Jumlah" prefWidth="100"/>
+                <Button text="Tambah" onAction="#handleAddItem" styleClass="custom-button"/>
+                <Button text="Hapus Item" onAction="#handleRemoveItem" styleClass="custom-button"/>
+            </children>
+        </HBox>
+
+        <!-- Dua tabel: cart (atas) + daftar nota (bawah), bisa di-resize user -->
+        <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS" dividerPositions="0.45">
+            <items>
+                <TableView fx:id="cartTable">
+                    <columns>
+                        <TableColumn fx:id="cartCetakanCol" text="Cetakan" prefWidth="280"/>
+                        <TableColumn fx:id="cartHargaCol" text="Harga" prefWidth="120"/>
+                        <TableColumn fx:id="cartJumlahCol" text="Jumlah" prefWidth="80"/>
+                        <TableColumn fx:id="cartSubtotalCol" text="Subtotal" prefWidth="130"/>
+                    </columns>
+                </TableView>
+
+                <TableView fx:id="notaTable">
+                    <columns>
+                        <TableColumn fx:id="notaNomorCol" text="Nomor Nota" prefWidth="160"/>
+                        <TableColumn fx:id="notaTanggalCol" text="Tanggal" prefWidth="120"/>
+                        <TableColumn fx:id="notaPelangganCol" text="Pelanggan" prefWidth="220"/>
+                        <TableColumn fx:id="notaTotalCol" text="Total" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </items>
+        </SplitPane>
+
+        <!-- Aksi Nota -->
+        <HBox spacing="10.0">
+            <children>
+                <Button text="Submit" onAction="#handleSubmit" styleClass="custom-button"/>
+                <Button text="Update" onAction="#handleUpdate" styleClass="custom-button"/>
+                <Button text="Delete" onAction="#handleDelete" styleClass="custom-button"/>
+                <Button text="Cetak"  onAction="#cetakNota" styleClass="custom-button"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>
